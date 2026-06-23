@@ -63,7 +63,7 @@ export default async function SermaoDetalhePage({ params }: { params: Promise<{ 
 
         {/* O texto principal da pregação - AGORA COM SUPORTE A HTML */}
         <div 
-          className="prose prose-stone max-w-none text-stone-700 text-lg leading-relaxed [&>p]:mb-4 [&>h1]:text-3xl [&>h1]:font-bold [&>h2]:text-2xl [&>h2]:font-bold [&>h3]:text-xl [&>h3]:font-bold [&>ul]:list-disc [&>ul]:ml-6 [&>ol]:list-decimal [&>ol]:ml-6 [&>strong]:text-[#0B1F3A]"
+          className="prose prose-stone max-w-none text-stone-700 text-lg leading-relaxed break-words overflow-hidden [&_img]:max-w-full [&_img]:h-auto [&>p]:mb-4 [&>h1]:text-3xl [&>h1]:font-bold [&>h2]:text-2xl [&>h2]:font-bold [&>h3]:text-xl [&>h3]:font-bold [&>ul]:list-disc [&>ul]:ml-6 [&>ol]:list-decimal [&>ol]:ml-6 [&>strong]:text-[#0B1F3A]"
           dangerouslySetInnerHTML={{ __html: sermao.content }} 
         />
 
