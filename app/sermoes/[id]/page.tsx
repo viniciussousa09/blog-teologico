@@ -61,11 +61,11 @@ export default async function SermaoDetalhePage({ params }: { params: Promise<{ 
           </div>
         )}
 
-        {/* O texto principal da pregação */}
+        {/* O texto principal da pregação - AGORA COM SUPORTE A HTML */}
         <div 
-  className="text-stone-700 mt-6 [&>p]:mb-4 [&>h1]:text-2xl [&>h1]:font-bold [&>h2]:text-xl [&>h2]:font-bold [&>ul]:list-disc [&>ul]:ml-5 [&>ol]:list-decimal [&>ol]:ml-5" 
-  dangerouslySetInnerHTML={{ __html: sermao.content }} 
-/>
+          className="prose prose-stone max-w-none text-stone-700 text-lg leading-relaxed [&>p]:mb-4 [&>h1]:text-3xl [&>h1]:font-bold [&>h2]:text-2xl [&>h2]:font-bold [&>h3]:text-xl [&>h3]:font-bold [&>ul]:list-disc [&>ul]:ml-6 [&>ol]:list-decimal [&>ol]:ml-6 [&>strong]:text-[#0B1F3A]"
+          dangerouslySetInnerHTML={{ __html: sermao.content }} 
+        />
 
       </div>
     </main>
