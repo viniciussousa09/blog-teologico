@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String?  
+  role      String   @default("AUTHOR")
+  posts     Post[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  posts     Post[]
+}
+
+model Series {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  posts     Post[]
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   
+  excerpt     String?  
+  imageUrl    String?
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+  
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  
+  seriesId    String?  
+  series      Series?  @relation(fields: [seriesId], references: [id])
+}
+
+// NOVA TABELA: Sermões 
+model Sermon {
+  id          String   @id @default(cuid())
+  title       String
+  content     String   // NOVO: Campo obrigatório para guardar o texto do sermão
+  description String?  // Opcional: um breve resumo da pregação
+  videoUrl    String?  // ATUALIZADO: O "?" torna o link do YouTube opcional
+  date        DateTime // Campo para guardar a data do culto
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
